@@ -120,6 +120,15 @@ public class EasyTextComponent {
         return this.extra;
     }
 
+    public void setExtra(List<EasyTextComponent> extra) {
+
+        if(extra == null) {
+            throw new IllegalArgumentException("extra cannot be null");
+        }
+
+        this.extra = extra;
+    }
+
     public TextComponent toTextComponent() {
 
         TextComponent component = new TextComponent(TextUtil.parseColors(this.text));

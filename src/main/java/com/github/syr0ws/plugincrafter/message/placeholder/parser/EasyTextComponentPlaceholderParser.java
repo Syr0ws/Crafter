@@ -4,6 +4,7 @@ import com.github.syr0ws.plugincrafter.component.EasyTextComponent;
 import com.github.syr0ws.plugincrafter.message.placeholder.Placeholder;
 import net.md_5.bungee.api.chat.TextComponent;
 
+import java.util.List;
 import java.util.Map;
 
 public class EasyTextComponentPlaceholderParser implements PlaceholderParser<EasyTextComponent> {
@@ -35,6 +36,12 @@ public class EasyTextComponentPlaceholderParser implements PlaceholderParser<Eas
             String openUrl = STRING_PLACEHOLDER_PARSER.parsePlaceholders(component.getOpenUrl(), placeholders);
             component.setOpenUrl(openUrl);
         }
+
+        List<EasyTextComponent> parsedExtra = component.getExtra().stream()
+                .map(extra -> this.parsePlaceholders(extra, placeholders))
+                .toList();
+
+        component.setExtra(parsedExtra);
 
         return component;
     }
