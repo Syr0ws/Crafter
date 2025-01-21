@@ -7,6 +7,10 @@ public class PlaceholderParserFactory {
     @SuppressWarnings("unchecked")
     public static <T> PlaceholderParser<T> getParser(Class<T> type) {
 
+        if(type == null) {
+            throw new IllegalArgumentException("type cannot be null");
+        }
+
         if(type == String.class) {
             return (PlaceholderParser<T>) new StringPlaceholderParser();
         } else if(type == TextComponent.class) {
