@@ -7,9 +7,17 @@ import java.util.Map;
 public class StringPlaceholderParser implements PlaceholderParser<String> {
 
     @Override
-    public String parsePlaceholders(String input, Map<Placeholder, String> placeholders) {
+    public String parsePlaceholders(String text, Map<Placeholder, String> placeholders) {
 
-        String parsed = input;
+        if(text == null) {
+            throw new IllegalArgumentException("text cannot be null");
+        }
+
+        if(placeholders == null) {
+            throw new IllegalArgumentException("placeholders cannot be null");
+        }
+
+        String parsed = text;
         for(Map.Entry<Placeholder, String> entry : placeholders.entrySet()) {
             parsed = parsed.replace(entry.getKey().getName(), entry.getValue());
         }
