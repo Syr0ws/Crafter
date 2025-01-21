@@ -11,6 +11,13 @@ public class TextUtil {
     private static final char COLOR_CHAR = '&';
     private static final Pattern HEX_PATTERN = Pattern.compile("&#([A-Fa-f\\d]{6})");
 
+    /**
+     * Parses color codes in a string and translates them into the corresponding Minecraft color codes.
+     * Supports both alternate color codes (e.g. '&') and hexadecimal color codes.
+     *
+     * @param string The input string containing color codes. Must not be null.
+     * @return The formatted string with color codes translated to Minecraft-compatible colors.
+     */
     public static String parseColors(String string) {
 
         string = ChatColor.translateAlternateColorCodes(COLOR_CHAR, string);
@@ -19,11 +26,18 @@ public class TextUtil {
         return string;
     }
 
+    /**
+     * Parses color codes in a list of strings and translates them into the corresponding Minecraft color codes.
+     * Supports both alternate color codes (e.g. '&') and hexadecimal color codes in each string.
+     *
+     * @param strings A list of strings containing color codes. Must not be null.
+     * @return A list of formatted strings with color codes translated to Minecraft-compatible colors.
+     */
     public static List<String> parseColors(List<String> strings) {
         return strings.stream().map(TextUtil::parseColors).toList();
     }
 
-    public static String parseHexColors(String message) {
+    private static String parseHexColors(String message) {
 
         char colorChar = ChatColor.COLOR_CHAR;
 
