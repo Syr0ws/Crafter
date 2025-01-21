@@ -14,6 +14,13 @@ import java.util.Map;
 
 public class MessageUtil {
 
+    /**
+     * Sends a formatted message to a player. The message is parsed to translate color codes.
+     *
+     * @param player  The player to send the message to. Must not be null.
+     * @param message The message to send. Must not be null.
+     * @throws IllegalArgumentException If {@code player} or {@code message} is null.
+     */
     public static void sendMessage(Player player, String message) {
 
         if(player == null) {
@@ -27,6 +34,14 @@ public class MessageUtil {
         player.sendMessage(TextUtil.parseColors(message));
     }
 
+    /**
+     * Sends a formatted message with placeholders to a player. The message is parsed to translate color codes and replace placeholders.
+     *
+     * @param player       The player to send the message to. Must not be null.
+     * @param message      The message to send. Must not be null.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code message}, or {@code placeholders} is null.
+     */
     public static void sendMessage(Player player, String message, Map<Placeholder, String> placeholders) {
 
         if(player == null) {
@@ -47,6 +62,13 @@ public class MessageUtil {
         player.sendMessage(TextUtil.parseColors(parsed));
     }
 
+    /**
+     * Sends a list of formatted messages to a player. Each message is parsed to translate color codes.
+     *
+     * @param player   The player to send the messages to. Must not be null.
+     * @param messages The list of messages to send. Must not be null.
+     * @throws IllegalArgumentException If {@code player} or {@code messages} is null.
+     */
     public static void sendMessages(Player player, List<String> messages) {
 
         if(player == null) {
@@ -64,6 +86,14 @@ public class MessageUtil {
         player.sendMessage(array);
     }
 
+    /**
+     * Sends a list of formatted messages with placeholders to a player. Each message is parsed to translate color codes and replace placeholders.
+     *
+     * @param player       The player to send the messages to. Must not be null.
+     * @param messages     The list of messages to send. Must not be null.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code messages}, or {@code placeholders} is null.
+     */
     public static void sendMessages(Player player, List<String> messages, Map<Placeholder, String> placeholders) {
 
         if(player == null) {
@@ -88,6 +118,14 @@ public class MessageUtil {
         player.sendMessage(array);
     }
 
+    /**
+     * Sends a formatted message from a configuration section to a player. The message is parsed to translate color codes.
+     *
+     * @param player  The player to send the message to. Must not be null.
+     * @param section The configuration section containing the message. Must not be null.
+     * @param key     The key of the message in the configuration section. Must not be null or empty.
+     * @throws IllegalArgumentException If {@code player}, {@code section}, or {@code key} is null or empty.
+     */
     public static void sendMessage(Player player, ConfigurationSection section, String key) {
 
         if(section == null) {
@@ -102,6 +140,15 @@ public class MessageUtil {
         MessageUtil.sendMessage(player, message);
     }
 
+    /**
+     * Sends a formatted message with placeholders from a configuration section to a player. The message is parsed to translate color codes and replace placeholders.
+     *
+     * @param player       The player to send the message to. Must not be null.
+     * @param section      The configuration section containing the message. Must not be null.
+     * @param key          The key of the message in the configuration section. Must not be null or empty.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code section}, {@code key}, or {@code placeholders} is null or empty.
+     */
     public static void sendMessage(Player player, ConfigurationSection section, String key, Map<Placeholder, String> placeholders) {
 
         if(section == null) {
@@ -116,6 +163,13 @@ public class MessageUtil {
         MessageUtil.sendMessage(player, message, placeholders);
     }
 
+    /**
+     * Sends a formatted text component to a player.
+     *
+     * @param player    The player to send the text component to. Must not be null.
+     * @param component The text component to send. Must not be null.
+     * @throws IllegalArgumentException If {@code player} or {@code component} is null.
+     */
     public static void sendMessage(Player player, EasyTextComponent component) {
 
         if(player == null) {
@@ -130,6 +184,14 @@ public class MessageUtil {
         player.spigot().sendMessage(tc);
     }
 
+    /**
+     * Sends a formatted text component with placeholders to a player. The text component is parsed to replace placeholders.
+     *
+     * @param player       The player to send the text component to. Must not be null.
+     * @param component    The text component to send. Must not be null.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code component}, or {@code placeholders} is null.
+     */
     public static void sendMessage(Player player, EasyTextComponent component, Map<Placeholder, String> placeholders) {
 
         if(player == null) {
