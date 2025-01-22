@@ -1,4 +1,4 @@
-package com.github.syr0ws.plugincrafter.text;
+package com.github.syr0ws.crafter.text;
 
 import net.md_5.bungee.api.ChatColor;
 

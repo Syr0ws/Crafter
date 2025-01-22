@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.syr0ws</groupId>
-    <artifactId>PluginCrafter</artifactId>
+    <artifactId>Crafter</artifactId>
     <version>0.0.1</version>
 
     <properties>
