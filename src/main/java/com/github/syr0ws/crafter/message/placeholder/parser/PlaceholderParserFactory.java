@@ -1,4 +1,4 @@
-package com.github.syr0ws.plugincrafter.message.placeholder.parser;
+package com.github.syr0ws.crafter.message.placeholder.parser;
 
 import net.md_5.bungee.api.chat.TextComponent;
 

@@ -1,10 +1,10 @@
-package com.github.syr0ws.plugincrafter.message;
+package com.github.syr0ws.crafter.message;
 
-import com.github.syr0ws.plugincrafter.component.EasyTextComponent;
-import com.github.syr0ws.plugincrafter.message.placeholder.Placeholder;
-import com.github.syr0ws.plugincrafter.message.placeholder.parser.PlaceholderParserFactory;
-import com.github.syr0ws.plugincrafter.message.placeholder.parser.PlaceholderParser;
-import com.github.syr0ws.plugincrafter.text.TextUtil;
+import com.github.syr0ws.crafter.component.EasyTextComponent;
+import com.github.syr0ws.crafter.message.placeholder.Placeholder;
+import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParserFactory;
+import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParser;
+import com.github.syr0ws.crafter.text.TextUtil;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;

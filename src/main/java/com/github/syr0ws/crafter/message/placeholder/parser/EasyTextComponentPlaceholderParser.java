@@ -1,8 +1,7 @@
-package com.github.syr0ws.plugincrafter.message.placeholder.parser;
+package com.github.syr0ws.crafter.message.placeholder.parser;
 
-import com.github.syr0ws.plugincrafter.component.EasyTextComponent;
-import com.github.syr0ws.plugincrafter.message.placeholder.Placeholder;
-import net.md_5.bungee.api.chat.TextComponent;
+import com.github.syr0ws.crafter.component.EasyTextComponent;
+import com.github.syr0ws.crafter.message.placeholder.Placeholder;
 
 import java.util.List;
 import java.util.Map;

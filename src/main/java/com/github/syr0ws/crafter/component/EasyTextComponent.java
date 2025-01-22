@@ -1,6 +1,6 @@
-package com.github.syr0ws.plugincrafter.component;
+package com.github.syr0ws.crafter.component;
 
-import com.github.syr0ws.plugincrafter.text.TextUtil;
+import com.github.syr0ws.crafter.text.TextUtil;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.*;
 import org.bukkit.configuration.ConfigurationSection;

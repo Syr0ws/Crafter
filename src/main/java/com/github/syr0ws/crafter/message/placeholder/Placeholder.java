@@ -1,4 +1,4 @@
-package com.github.syr0ws.plugincrafter.message.placeholder;
+package com.github.syr0ws.crafter.message.placeholder;
 
 /**
  * Represents a placeholder that can be used in texts.

@@ -1,4 +1,4 @@
-package com.github.syr0ws.plugincrafter.file;
+package com.github.syr0ws.crafter.file;
 
 import org.bukkit.plugin.Plugin;
 

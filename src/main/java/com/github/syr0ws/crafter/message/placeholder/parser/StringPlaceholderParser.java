@@ -1,6 +1,6 @@
-package com.github.syr0ws.plugincrafter.message.placeholder.parser;
+package com.github.syr0ws.crafter.message.placeholder.parser;
 
-import com.github.syr0ws.plugincrafter.message.placeholder.Placeholder;
+import com.github.syr0ws.crafter.message.placeholder.Placeholder;
 
 import java.util.Map;
 
