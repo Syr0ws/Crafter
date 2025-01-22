@@ -1,5 +1,6 @@
 package com.github.syr0ws.crafter.message.placeholder.parser;
 
+import com.github.syr0ws.crafter.component.EasyTextComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class PlaceholderParserFactory {
@@ -13,7 +14,7 @@ public class PlaceholderParserFactory {
 
         if(type == String.class) {
             return (PlaceholderParser<T>) new StringPlaceholderParser();
-        } else if(type == TextComponent.class) {
+        } else if(type == EasyTextComponent.class) {
             return (PlaceholderParser<T>) new EasyTextComponentPlaceholderParser();
         }
 
