@@ -14,6 +14,8 @@ Crafter actually contains utilities for the following use cases:
   - TextComponent building (using code or from YAML files)
 - **File handling**
   - Copying plugin's resources to external paths without logs
+- **Other utilities**
+  - Observers
 
 ## Setup
 
