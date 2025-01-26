@@ -5,9 +5,7 @@ import org.bukkit.plugin.Plugin;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 
 public class FileUtil {
 
@@ -47,7 +45,12 @@ public class FileUtil {
                 throw new FileNotFoundException(String.format("Resource '%s' not found", resourcePath));
             }
 
-            Files.copy(stream, target);
+            if(target.getParent() != null) {
+                Files.createDirectories(target.getParent());
+            }
+
+            CopyOption[] options = replace ? new CopyOption[]{StandardCopyOption.REPLACE_EXISTING} : new CopyOption[]{};
+            Files.copy(stream, target, options);
         }
     }
 
