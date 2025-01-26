@@ -36,9 +36,39 @@ Crafter can be included in your project by using a dependency manager like **Mav
 </dependency>
 ```
 
+To minimize the jar and relocate the sources, you can use `maven-shade-plugin`:
+```xml
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-shade-plugin</artifactId>
+      <version>3.6.0</version>
+      <executions>
+        <execution>
+          <phase>package</phase>
+          <goals>
+            <goal>shade</goal>
+          </goals>
+          <configuration>
+            <minimizeJar>true</minimizeJar>
+            <createDependencyReducedPom>false</createDependencyReducedPom>
+            <relocations>
+              <relocation>
+                <pattern>com.github.syr0ws.crafter</pattern>
+                <shadedPattern>your.package.util</shadedPattern>
+              </relocation>
+            </relocations>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+```
+
 **Gradle**
 ```groovy
-
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -49,5 +79,20 @@ dependencyResolutionManagement {
 
 dependencies {
     implementation 'com.github.syr0ws:Crafter:{VERSION}'
+}
+```
+To minimize the jar and relocate the sources, you can use the `shadow` plugin:
+```groovy
+plugins {
+  id 'com.github.johnrengelman.shadow' version '8.3.5'
+}
+
+shadowJar {
+  minimize()
+  relocate 'com.github.syr0ws.crafter', 'your.package.util'
+}
+
+tasks.build {
+  dependsOn shadowJar
 }
 ```
