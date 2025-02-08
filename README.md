@@ -14,8 +14,12 @@ Crafter actually contains utilities for the following use cases:
   - TextComponent building (using code or from YAML files)
 - **File handling**
   - Plugin's resources copy to external paths without logs
+- **Configuration handling**
+  - Reusable methods to retrieve specific objects from a `ConfigurationSection`
+  - Generic and reusable exceptions
 - **Other utilities**
   - Observers
+  - Validation
 
 ## Setup
 
