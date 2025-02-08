@@ -1,6 +1,5 @@
 package com.github.syr0ws.crafter.config;
 
-import com.github.syr0ws.minewaypoints.exception.ConfigurationException;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 
