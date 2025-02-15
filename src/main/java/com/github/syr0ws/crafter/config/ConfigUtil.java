@@ -1,5 +1,6 @@
 package com.github.syr0ws.crafter.config;
 
+import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 
@@ -18,14 +19,8 @@ public class ConfigUtil {
      * @throws ConfigurationException if the material name is invalid or not found.
      */
     public static Material getMaterial(ConfigurationSection section, String key) throws ConfigurationException {
-
-        if(section == null) {
-            throw new IllegalArgumentException("section cannot be null");
-        }
-
-        if(key == null) {
-            throw new IllegalArgumentException("key cannot be null");
-        }
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
 
         String materialName = section.getString(key, "");
         Material material = Material.matchMaterial(materialName);

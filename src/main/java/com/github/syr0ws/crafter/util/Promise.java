@@ -25,10 +25,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the executor is {@code null}.
      */
     public Promise(PromiseExecutor<T> executor) {
-
-        if(executor == null) {
-            throw new IllegalArgumentException("executor cannot be null");
-        }
+        Validate.notNull(executor, "executor cannot be null");
 
         this.executor = executor;
     }
@@ -41,10 +38,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the consumer is {@code null}.
      */
     public Promise<T> then(Consumer<T> consumer) {
-
-        if(consumer == null) {
-            throw new IllegalArgumentException("consumer cannot be null");
-        }
+        Validate.notNull(consumer, "consumer cannot be null");
 
         this.then = consumer;
         return this;
@@ -58,10 +52,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the consumer is {@code null}.
      */
     public Promise<T> except(Consumer<Throwable> consumer) {
-
-        if(consumer == null) {
-            throw new IllegalArgumentException("consumer cannot be null");
-        }
+        Validate.notNull(consumer, "consumer cannot be null");
 
         this.except = consumer;
         return this;
@@ -75,10 +66,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the runnable is {@code null}.
      */
     public Promise<T> complete(Runnable runnable) {
-
-        if(runnable == null) {
-            throw new IllegalArgumentException("runnable cannot be null");
-        }
+        Validate.notNull(runnable, "runnable cannot be null");
 
         this.complete = runnable;
         return this;
@@ -91,10 +79,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the plugin is {@code null}.
      */
     public void resolveSync(Plugin plugin) {
-
-        if(plugin == null) {
-            throw new IllegalArgumentException("plugin cannot be null");
-        }
+        Validate.notNull(plugin, "plugin cannot be null");
 
         Bukkit.getScheduler().runTask(plugin, this::resolve);
     }
@@ -106,10 +91,7 @@ public class Promise<T> {
      * @throws IllegalArgumentException if the plugin is {@code null}.
      */
     public void resolveAsync(Plugin plugin) {
-
-        if(plugin == null) {
-            throw new IllegalArgumentException("plugin cannot be null");
-        }
+        Validate.notNull(plugin, "plugin cannot be null");
 
         Bukkit.getScheduler().runTaskAsynchronously(plugin, this::resolve);
     }

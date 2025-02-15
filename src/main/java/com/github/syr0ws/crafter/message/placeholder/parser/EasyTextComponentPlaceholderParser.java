@@ -2,6 +2,7 @@ package com.github.syr0ws.crafter.message.placeholder.parser;
 
 import com.github.syr0ws.crafter.component.EasyTextComponent;
 import com.github.syr0ws.crafter.message.placeholder.Placeholder;
+import com.github.syr0ws.crafter.util.Validate;
 
 import java.util.List;
 import java.util.Map;
@@ -12,14 +13,8 @@ public class EasyTextComponentPlaceholderParser implements PlaceholderParser<Eas
 
     @Override
     public EasyTextComponent parsePlaceholders(EasyTextComponent component, Map<Placeholder, String> placeholders) {
-
-        if(component == null) {
-            throw new IllegalArgumentException("component cannot be null");
-        }
-
-        if(placeholders == null) {
-            throw new IllegalArgumentException("placeholders cannot be null");
-        }
+        Validate.notNull(component, "component cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
 
         String text = STRING_PLACEHOLDER_PARSER.parsePlaceholders(component.getText(), placeholders);
         component.setText(text);
