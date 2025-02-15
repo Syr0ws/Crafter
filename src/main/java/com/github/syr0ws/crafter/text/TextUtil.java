@@ -1,5 +1,6 @@
 package com.github.syr0ws.crafter.text;
 
+import com.github.syr0ws.crafter.util.Validate;
 import net.md_5.bungee.api.ChatColor;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class TextUtil {
      * @return The formatted string with color codes translated to Minecraft-compatible colors.
      */
     public static String parseColors(String string) {
+        Validate.notNull(string, "string cannot be null");
 
         string = ChatColor.translateAlternateColorCodes(COLOR_CHAR, string);
         string = parseHexColors(string);
@@ -34,6 +36,8 @@ public class TextUtil {
      * @return A list of formatted strings with color codes translated to Minecraft-compatible colors.
      */
     public static List<String> parseColors(List<String> strings) {
+        Validate.notNull(strings, "strings cannot be null");
+
         return strings.stream().map(TextUtil::parseColors).toList();
     }
 

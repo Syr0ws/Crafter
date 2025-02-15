@@ -19,10 +19,7 @@ public class Observable {
      * @throws IllegalArgumentException if the observer is {@code null}.
      */
     public void addObserver(Observer observer) {
-
-        if(observer == null) {
-            throw new IllegalArgumentException("observer cannot be null");
-        }
+        Validate.notNull(observer, "observer cannot be null");
 
         this.observers.add(observer);
     }
@@ -34,10 +31,7 @@ public class Observable {
      * @throws IllegalArgumentException if the observer is {@code null}.
      */
     public void removeObserver(Observer observer) {
-
-        if(observer == null) {
-            throw new IllegalArgumentException("observer cannot be null");
-        }
+        Validate.notNull(observer, "observer cannot be null");
 
         this.observers.remove(observer);
     }
@@ -50,10 +44,7 @@ public class Observable {
      * @throws IllegalArgumentException if the observer is {@code null}.
      */
     public boolean hasObserver(Observer observer) {
-
-        if(observer == null) {
-            throw new IllegalArgumentException("observer cannot be null");
-        }
+        Validate.notNull(observer, "observer cannot be null");
 
         return this.observers.contains(observer);
     }

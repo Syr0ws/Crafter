@@ -1,16 +1,13 @@
 package com.github.syr0ws.crafter.message.placeholder.parser;
 
 import com.github.syr0ws.crafter.component.EasyTextComponent;
-import net.md_5.bungee.api.chat.TextComponent;
+import com.github.syr0ws.crafter.util.Validate;
 
 public class PlaceholderParserFactory {
 
     @SuppressWarnings("unchecked")
     public static <T> PlaceholderParser<T> getParser(Class<T> type) {
-
-        if(type == null) {
-            throw new IllegalArgumentException("type cannot be null");
-        }
+        Validate.notNull(type, "type cannot be null");
 
         if(type == String.class) {
             return (PlaceholderParser<T>) new StringPlaceholderParser();

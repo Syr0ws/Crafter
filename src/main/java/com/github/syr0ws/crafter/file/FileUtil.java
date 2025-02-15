@@ -1,5 +1,6 @@
 package com.github.syr0ws.crafter.file;
 
+import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.plugin.Plugin;
 
 import java.io.FileNotFoundException;
@@ -22,18 +23,9 @@ public class FileUtil {
      * @throws FileNotFoundException    If the specified resource cannot be found in the plugin's resources.
      */
     public static void copyResource(Plugin plugin, String resourcePath, Path target, boolean replace) throws IOException {
-
-        if (plugin == null) {
-            throw new IllegalArgumentException("plugin cannot be null");
-        }
-
-        if (resourcePath == null) {
-            throw new IllegalArgumentException("resourcePath cannot be null");
-        }
-
-        if (target == null) {
-            throw new IllegalArgumentException("target cannot be null");
-        }
+        Validate.notNull(plugin, "plugin cannot be null");
+        Validate.notNull(resourcePath, "resourcePath cannot be null");
+        Validate.notNull(target, "target cannot be null");
 
         if (Files.exists(target) && !replace) {
             return;

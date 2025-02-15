@@ -1,6 +1,7 @@
 package com.github.syr0ws.crafter.message.placeholder.parser;
 
 import com.github.syr0ws.crafter.message.placeholder.Placeholder;
+import com.github.syr0ws.crafter.util.Validate;
 
 import java.util.Map;
 
@@ -8,14 +9,8 @@ public class StringPlaceholderParser implements PlaceholderParser<String> {
 
     @Override
     public String parsePlaceholders(String text, Map<Placeholder, String> placeholders) {
-
-        if(text == null) {
-            throw new IllegalArgumentException("text cannot be null");
-        }
-
-        if(placeholders == null) {
-            throw new IllegalArgumentException("placeholders cannot be null");
-        }
+        Validate.notNull(text, "text cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
 
         String parsed = text;
         for(Map.Entry<Placeholder, String> entry : placeholders.entrySet()) {

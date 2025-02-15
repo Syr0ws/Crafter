@@ -5,6 +5,7 @@ import com.github.syr0ws.crafter.message.placeholder.Placeholder;
 import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParserFactory;
 import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParser;
 import com.github.syr0ws.crafter.text.TextUtil;
+import com.github.syr0ws.crafter.util.Validate;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -22,14 +23,8 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player} or {@code message} is null.
      */
     public static void sendMessage(Player player, String message) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(message == null) {
-            throw new IllegalArgumentException("message cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(message, "message cannot be null");
 
         player.sendMessage(TextUtil.parseColors(message));
     }
@@ -43,18 +38,9 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player}, {@code message}, or {@code placeholders} is null.
      */
     public static void sendMessage(Player player, String message, Map<Placeholder, String> placeholders) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(message == null) {
-            throw new IllegalArgumentException("message cannot be null");
-        }
-
-        if(placeholders == null) {
-            throw new IllegalArgumentException("placeholders cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(message, "message cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
 
         PlaceholderParser<String> parser = PlaceholderParserFactory.getParser(String.class);
         String parsed = parser.parsePlaceholders(message, placeholders);
@@ -70,14 +56,8 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player} or {@code messages} is null.
      */
     public static void sendMessages(Player player, List<String> messages) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(messages == null) {
-            throw new IllegalArgumentException("messages cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(messages, "messages cannot be null");
 
         String[] array = messages.stream()
                 .map(TextUtil::parseColors)
@@ -95,18 +75,9 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player}, {@code messages}, or {@code placeholders} is null.
      */
     public static void sendMessages(Player player, List<String> messages, Map<Placeholder, String> placeholders) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(messages == null) {
-            throw new IllegalArgumentException("messages cannot be null");
-        }
-
-        if(placeholders == null) {
-            throw new IllegalArgumentException("placeholders cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(messages, "messages cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
 
         PlaceholderParser<String> parser = PlaceholderParserFactory.getParser(String.class);
 
@@ -127,14 +98,8 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player}, {@code section}, or {@code key} is null or empty.
      */
     public static void sendMessage(Player player, ConfigurationSection section, String key) {
-
-        if(section == null) {
-            throw new IllegalArgumentException("section cannot be null");
-        }
-
-        if(key == null || key.isEmpty()) {
-            throw new IllegalArgumentException("key cannot be null or empty");
-        }
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
 
         String message = section.getString(key, "");
         MessageUtil.sendMessage(player, message);
@@ -150,14 +115,8 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player}, {@code section}, {@code key}, or {@code placeholders} is null or empty.
      */
     public static void sendMessage(Player player, ConfigurationSection section, String key, Map<Placeholder, String> placeholders) {
-
-        if(section == null) {
-            throw new IllegalArgumentException("section cannot be null");
-        }
-
-        if(key == null || key.isEmpty()) {
-            throw new IllegalArgumentException("key cannot be null or empty");
-        }
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
 
         String message = section.getString(key, "");
         MessageUtil.sendMessage(player, message, placeholders);
@@ -171,14 +130,8 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player} or {@code component} is null.
      */
     public static void sendMessage(Player player, EasyTextComponent component) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(component == null) {
-            throw new IllegalArgumentException("component cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(component, "component cannot be null");
 
         TextComponent tc = component.toTextComponent();
         player.spigot().sendMessage(tc);
@@ -193,18 +146,9 @@ public class MessageUtil {
      * @throws IllegalArgumentException If {@code player}, {@code component}, or {@code placeholders} is null.
      */
     public static void sendMessage(Player player, EasyTextComponent component, Map<Placeholder, String> placeholders) {
-
-        if(player == null) {
-            throw new IllegalArgumentException("player cannot be null");
-        }
-
-        if(component == null) {
-            throw new IllegalArgumentException("component cannot be null");
-        }
-
-        if(placeholders == null) {
-            throw new IllegalArgumentException("placeholders cannot be null");
-        }
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(component, "component cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
 
         PlaceholderParser<EasyTextComponent> parser = PlaceholderParserFactory.getParser(EasyTextComponent.class);
         EasyTextComponent parsed = parser.parsePlaceholders(component, placeholders);
