@@ -26,4 +26,30 @@ public class Validate {
 
         return matcher.matches();
     }
+
+    /**
+     * Checks that the given object is not null; otherwise, throws an exception.
+     *
+     * @param object  the object to check.
+     * @param message the exception message if the object is null.
+     * @throws IllegalArgumentException if the object is null.
+     */
+    public static void notNull(Object object, String message) {
+        if(object == null) {
+            throw new IllegalArgumentException(message);
+        }
+    }
+
+    /**
+     * Checks that the given object is not null nor empty; otherwise, throws an exception.
+     *
+     * @param string  the string to check.
+     * @param message the exception message if the string is null or empty.
+     * @throws IllegalArgumentException if the string is null or empty.
+     */
+    public static void notEmpty(String string, String message) {
+        if(string == null || string.isEmpty()) {
+            throw new IllegalArgumentException(message);
+        }
+    }
 }
