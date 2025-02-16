@@ -6,6 +6,8 @@ import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParserFac
 import com.github.syr0ws.crafter.message.placeholder.parser.PlaceholderParser;
 import com.github.syr0ws.crafter.text.TextUtil;
 import com.github.syr0ws.crafter.util.Validate;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -155,5 +157,73 @@ public class MessageUtil {
 
         TextComponent tc = parsed.toTextComponent();
         player.spigot().sendMessage(tc);
+    }
+
+    /**
+     * Sends a formatted action bar message to a player. The message is parsed to translate color codes.
+     *
+     * @param player  The player to send the action bar message to. Must not be null.
+     * @param message The message to send. Must not be null.
+     * @throws IllegalArgumentException If {@code player} or {@code message} is null.
+     */
+    public static void sendActionBar(Player player, String message) {
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(message, "message cannot be null");
+
+        TextComponent component = new TextComponent(TextUtil.parseColors(message));
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component);
+    }
+
+    /**
+     * Sends a formatted action bar message with placeholders to a player. The message is parsed to translate color codes and replace placeholders.
+     *
+     * @param player       The player to send the action bar message to. Must not be null.
+     * @param message      The message to send. Must not be null.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code message}, or {@code placeholders} is null.
+     */
+    public static void sendActionBar(Player player, String message, Map<Placeholder, String> placeholders) {
+        Validate.notNull(player, "player cannot be null");
+        Validate.notNull(message, "message cannot be null");
+        Validate.notNull(placeholders, "placeholders cannot be null");
+
+        PlaceholderParser<String> parser = PlaceholderParserFactory.getParser(String.class);
+        String parsed = parser.parsePlaceholders(message, placeholders);
+
+        TextComponent component = new TextComponent(TextUtil.parseColors(parsed));
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component);
+    }
+
+    /**
+     * Sends a formatted action bar message from a configuration section to a player. The message is parsed to translate color codes.
+     *
+     * @param player  The player to send the action bar message to. Must not be null.
+     * @param section The configuration section containing the message. Must not be null.
+     * @param key     The key of the message in the configuration section. Must not be null or empty.
+     * @throws IllegalArgumentException If {@code player}, {@code section}, or {@code key} is null or empty.
+     */
+    public static void sendActionBar(Player player, ConfigurationSection section, String key) {
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
+
+        String message = section.getString(key, "");
+        MessageUtil.sendActionBar(player, message);
+    }
+
+    /**
+     * Sends a formatted action bar message with placeholders from a configuration section to a player. The message is parsed to translate color codes and replace placeholders.
+     *
+     * @param player       The player to send the action bar message to. Must not be null.
+     * @param section      The configuration section containing the message. Must not be null.
+     * @param key          The key of the message in the configuration section. Must not be null or empty.
+     * @param placeholders A map of placeholders and their replacement values. Must not be null.
+     * @throws IllegalArgumentException If {@code player}, {@code section}, {@code key}, or {@code placeholders} is null or empty.
+     */
+    public static void sendActionBar(Player player, ConfigurationSection section, String key, Map<Placeholder, String> placeholders) {
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
+
+        String message = section.getString(key, "");
+        MessageUtil.sendActionBar(player, message, placeholders);
     }
 }
