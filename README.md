@@ -8,7 +8,7 @@ Crafter is a set of reusable **utilities** to accelerate the development of **Mi
 
 Crafter actually contains utilities for the following use cases:
 - **Message handling**
-  - Sending messages (string, list, text components, action bars)
+  - Sending messages (string, list, text component, action bar)
   - Colors (color codes, hexadecimal) parsing
   - Placeholders parsing
   - TextComponent building (using code or from YAML files)
