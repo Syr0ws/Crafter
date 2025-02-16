@@ -20,6 +20,7 @@ Crafter actually contains utilities for the following use cases:
 - **Other utilities**
   - Observers
   - Validation
+  - Finding the direction to a target location
   - Promise to handle async operations
 
 ## Setup
