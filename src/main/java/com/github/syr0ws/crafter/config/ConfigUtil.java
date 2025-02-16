@@ -1,5 +1,6 @@
 package com.github.syr0ws.crafter.config;
 
+import com.github.syr0ws.crafter.util.Direction;
 import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -31,5 +32,22 @@ public class ConfigUtil {
         }
 
         return material;
+    }
+
+    /**
+     * Retrieves the symbol associated with a given {@link Direction} from the provided configuration.
+     *
+     * @param direction the direction for which to retrieve the symbol.
+     * @param section   the configuration section containing the direction symbols.
+     * @return the symbol associated with the given direction, or an empty string if not found.
+     * @throws IllegalArgumentException if {@code direction} or {@code section} is null.
+     */
+    public static String getDirectionSymbol(Direction direction, ConfigurationSection section) {
+        Validate.notNull(direction, "direction cannot be null");
+        Validate.notNull(section, "section cannot be null");
+
+        String directionKey = direction.name().toLowerCase().replace("_", "-");
+
+        return section.getString(directionKey, "");
     }
 }
