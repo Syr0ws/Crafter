@@ -2,6 +2,7 @@ package com.github.syr0ws.crafter.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.function.Consumer;
 
@@ -26,7 +27,6 @@ public class Promise<T> {
      */
     public Promise(PromiseExecutor<T> executor) {
         Validate.notNull(executor, "executor cannot be null");
-
         this.executor = executor;
     }
 
@@ -39,7 +39,6 @@ public class Promise<T> {
      */
     public Promise<T> then(Consumer<T> consumer) {
         Validate.notNull(consumer, "consumer cannot be null");
-
         this.then = consumer;
         return this;
     }
@@ -53,7 +52,6 @@ public class Promise<T> {
      */
     public Promise<T> except(Consumer<Throwable> consumer) {
         Validate.notNull(consumer, "consumer cannot be null");
-
         this.except = consumer;
         return this;
     }
@@ -67,7 +65,6 @@ public class Promise<T> {
      */
     public Promise<T> complete(Runnable runnable) {
         Validate.notNull(runnable, "runnable cannot be null");
-
         this.complete = runnable;
         return this;
     }
@@ -75,24 +72,45 @@ public class Promise<T> {
     /**
      * Resolves the promise synchronously on the main server thread.
      *
+     * <p>This method executes the resolution logic immediately on the current thread
+     * and does not use a Bukkit scheduling method.</p>
+     *
+     * @throws IllegalArgumentException if the plugin is {@code null}.
+     */
+    public void resolve() {
+        try {
+            this.executor.execute(this::onThen, this::onExcept);
+        } catch (Exception exception) {
+            this.onExcept(exception);
+        }
+        this.onComplete();
+    }
+
+    /**
+     * Resolves the promise synchronously in a Bukkit task.
+     *
+     * <p>This method schedules the resolution logic to run synchronously on the main
+     * server thread using {@link BukkitScheduler#runTask(Plugin, Runnable)}.</p>
+     *
      * @param plugin the plugin instance required to schedule the task.
      * @throws IllegalArgumentException if the plugin is {@code null}.
      */
     public void resolveSync(Plugin plugin) {
         Validate.notNull(plugin, "plugin cannot be null");
-
         Bukkit.getScheduler().runTask(plugin, this::resolve);
     }
 
     /**
-     * Resolves the promise asynchronously on a separate thread.
+     * Resolves the promise asynchronously in a Bukkit task on a separate thread.
+     *
+     * <p>This method schedules the resolution logic to run asynchronously on a separate
+     * thread using {@link BukkitScheduler#runTaskAsynchronously(Plugin, Runnable)}.</p>
      *
      * @param plugin the plugin instance required to schedule the task.
      * @throws IllegalArgumentException if the plugin is {@code null}.
      */
     public void resolveAsync(Plugin plugin) {
         Validate.notNull(plugin, "plugin cannot be null");
-
         Bukkit.getScheduler().runTaskAsynchronously(plugin, this::resolve);
     }
 
@@ -112,14 +130,5 @@ public class Promise<T> {
         if(this.complete != null) {
             this.complete.run();
         }
-    }
-
-    private void resolve() {
-        try {
-            this.executor.execute(this::onThen, this::onExcept);
-        } catch (Exception exception) {
-            this.onExcept(exception);
-        }
-        this.onComplete();
     }
 }
