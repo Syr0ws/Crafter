@@ -28,11 +28,14 @@ public class Promise<T> {
      * Constructs a new {@code Promise} with the specified executor.
      *
      * @param executor the executor responsible for resolving the promise.
-     * @throws IllegalArgumentException if the executor is {@code null}.
      */
     public Promise(PromiseExecutor<T> executor) {
         Validate.notNull(executor, "executor cannot be null");
         this.executor = executor;
+    }
+
+    private Promise() {
+        this.executor = null;
     }
 
     /**
@@ -116,10 +119,12 @@ public class Promise<T> {
             throw new IllegalStateException("Promise has already been resolved");
         }
 
-        try {
-            this.executor.execute(this::onThen, this::onExcept);
-        } catch (Exception exception) {
-            this.onExcept(exception);
+        if(this.executor != null) {
+            try {
+                this.executor.execute(this::onThen, this::onExcept);
+            } catch (Exception exception) {
+                this.onExcept(exception);
+            }
         }
 
         this.onComplete();
@@ -160,6 +165,14 @@ public class Promise<T> {
      */
     public PromiseStatus getStatus() {
         return this.status;
+    }
+
+    /**
+     * Constructs a new {@code Promise} empty promise. This promise has no executor and only
+     * callbacks registered using the {@link Promise#complete(Runnable)} method will be executed.
+     */
+    public static <T> Promise<T> empty() {
+        return new Promise<>();
     }
 
     private void onThen(T value) {
