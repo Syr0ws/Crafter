@@ -15,15 +15,6 @@ public class BusinessResult<T, F extends BusinessFailure> {
         this.failure = failure;
     }
 
-    public static <T, F extends BusinessFailure> BusinessResult<T, F> success(T result) {
-        return new BusinessResult<>(result, null);
-    }
-
-    public static <T, F extends BusinessFailure> BusinessResult<T, F> error(F failure) {
-        Validate.notNull(failure, "failure cannot be null");
-        return new BusinessResult<>(null, failure);
-    }
-
     public BusinessResult<T, F> onSuccess(Consumer<T> consumer) {
         Validate.notNull(consumer, "consumer cannot be null");
         this.success().ifPresent(consumer);
@@ -42,5 +33,18 @@ public class BusinessResult<T, F extends BusinessFailure> {
 
     public Optional<F> failure() {
         return Optional.ofNullable(this.failure);
+    }
+
+    public static <T, F extends BusinessFailure> BusinessResult<T, F> success(T result) {
+        return new BusinessResult<>(result, null);
+    }
+
+    public static <T, F extends BusinessFailure> BusinessResult<T, F> error(F failure) {
+        Validate.notNull(failure, "failure cannot be null");
+        return new BusinessResult<>(null, failure);
+    }
+
+    public static <T, F extends BusinessFailure> BusinessResult<T, F> empty() {
+        return new BusinessResult<>(null, null);
     }
 }
