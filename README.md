@@ -23,6 +23,7 @@ Crafter actually contains utilities for the following use cases:
   - Finding the direction to a target location
   - Promise to handle async operations
   - SQL script runner
+  - Business operations utilities
 
 ## Setup
 
