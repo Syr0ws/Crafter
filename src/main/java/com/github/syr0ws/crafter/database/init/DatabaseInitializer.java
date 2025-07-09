@@ -61,7 +61,7 @@ public class DatabaseInitializer {
         DatabaseFactory factory = new DatabaseFactory();
         factory.support(this.drivers);
 
-        if(!factory.isSupported(driver)) {
+        if (!factory.isSupported(driver)) {
             throw new UnsupportedDatabaseDriverException("Database driver '%s' is not supported".formatted(driver.getDriverName()));
         }
 
@@ -74,7 +74,7 @@ public class DatabaseInitializer {
         database.createDatabaseIfNotExists();
 
         // Schema migration.
-        if(this.migrator != null) {
+        if (this.migrator != null) {
             this.migrator.migrate(database);
         }
 

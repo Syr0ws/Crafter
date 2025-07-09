@@ -44,11 +44,11 @@ public class DatabaseConnectionConfigLoader {
         String username = section.getString("username", "root");
         String password = section.getString("password", "");
 
-        if(database == null) {
+        if (database == null) {
             throw new ConfigurationException("Invalid property '%s.database': null".formatted(section.getCurrentPath()));
         }
 
-        if(port < 0) {
+        if (port < 0) {
             throw new ConfigurationException("Invalid property '%s.port': %d".formatted(section.getCurrentPath(), port));
         }
 

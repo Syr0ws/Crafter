@@ -21,7 +21,7 @@ public class HikariConnectionPoolFactory implements DatabaseConnectionPoolFactor
         Validate.notNull(driver, "driver cannot be null");
         Validate.notNull(config, "config cannot be null");
 
-        if(driver == DatabaseDriver.SQLITE) {
+        if (driver == DatabaseDriver.SQLITE) {
             return new SQLiteDatabaseConnectionPool(driver, config, this.plugin);
         }
 

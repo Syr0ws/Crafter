@@ -56,9 +56,9 @@ public class DatabaseFactory {
      *
      * @param driver the database driver
      * @param config the connection configuration
-     * @param pool the connection pool
+     * @param pool   the connection pool
      * @return a new {@link Database} implementation corresponding to the driver
-     * @throws IllegalArgumentException if any argument is {@code null}
+     * @throws IllegalArgumentException      if any argument is {@code null}
      * @throws UnsupportedOperationException if the driver is not supported
      */
     public Database createDatabase(DatabaseDriver driver, DatabaseConnectionConfig config, DatabaseConnectionPool pool) {
@@ -66,7 +66,7 @@ public class DatabaseFactory {
         Validate.notNull(config, "config cannot be null");
         Validate.notNull(pool, "pool cannot be null");
 
-        if(!this.supported.contains(driver)) {
+        if (!this.supported.contains(driver)) {
             throw new UnsupportedOperationException("Unsupported database driver: " + driver.getDriverName());
         }
 
