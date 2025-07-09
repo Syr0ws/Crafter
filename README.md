@@ -14,6 +14,12 @@ Crafter actually contains utilities for the following use cases:
   - TextComponent building (using code or from YAML files)
 - **File handling**
   - Plugin's resources copy to external paths without logs
+- **Database handling**
+  - Retrieve database connection settings through YAML configuration files 
+  - Database connection pooling (HikariCP)
+  - Automatic database schemes migration (Flyway)
+  - Automatic database setup (creation, connection, migration)
+  - Supported drivers: SQLite, MySQL, MariaDB, PostgreSQL
 - **Configuration handling**
   - Reusable methods to retrieve specific objects from a `ConfigurationSection`
   - Generic and reusable exceptions
