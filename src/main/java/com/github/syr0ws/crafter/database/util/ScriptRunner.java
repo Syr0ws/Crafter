@@ -1,4 +1,4 @@
-package com.github.syr0ws.crafter.sql;
+package com.github.syr0ws.crafter.database.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
