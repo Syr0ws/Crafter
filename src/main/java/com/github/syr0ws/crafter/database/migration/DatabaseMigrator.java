@@ -12,5 +12,5 @@ public interface DatabaseMigrator {
      *
      * @param database the database to migrate
      */
-    void migrate(Database database);
+    void migrate(Database database) throws Exception;
 }
