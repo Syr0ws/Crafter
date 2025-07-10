@@ -11,11 +11,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 
+/**
+ * A simple {@link DatabaseMigrator} implementation that is able to run a single SQL script.
+ */
 public class SimpleMigrator implements DatabaseMigrator {
 
     private final Plugin plugin;
     private final String initScript;
 
+    /**
+     * Constructs a new {@code SimpleMigrator} for the given plugin. The plugin must contain
+     * the database migration schemes in its resources folder.
+     *
+     * @param plugin the plugin used
+     * @param initScript the path of the script to migrate in the plugin's resources folder
+     */
     public SimpleMigrator(Plugin plugin, String initScript) {
         Validate.notNull(plugin, "plugin cannot be null");
         Validate.notEmpty(initScript, "initScript cannot be null or empty");
