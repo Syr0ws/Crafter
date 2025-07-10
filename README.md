@@ -17,7 +17,7 @@ Crafter actually contains utilities for the following use cases:
 - **Database handling**
   - Retrieve database connection settings through YAML configuration files 
   - Database connection pooling (HikariCP)
-  - Automatic database schemes migration (Flyway)
+  - Automatic database schemes migration (Flyway, Single script)
   - Automatic database setup (creation, connection, migration)
   - Supported drivers: SQLite, MySQL, MariaDB, PostgreSQL
 - **Configuration handling**
