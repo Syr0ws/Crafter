@@ -3,6 +3,7 @@ package com.github.syr0ws.crafter.config;
 import com.github.syr0ws.crafter.util.Direction;
 import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 
 /**
@@ -49,5 +50,28 @@ public class ConfigUtil {
         String directionKey = direction.name().toLowerCase().replace("_", "-");
 
         return section.getString(directionKey, "");
+    }
+
+    /**
+     * Retrieves a {@link NamespacedKey} from a configuration.
+     *
+     * @param section the configuration to retrieve the NamespacedKey from
+     * @param key key associated with the namespace value
+     * @return namespaced key
+     * @throws IllegalArgumentException if {@code section} or {@code key} is null
+     * @throws ConfigurationException if the namespaced key is invalid
+     */
+    public static NamespacedKey getNamespacedKey(ConfigurationSection section, String key) throws ConfigurationException {
+        Validate.notNull(section, "section cannot be null");
+        Validate.notEmpty(key, "key cannot be null or empty");
+
+        String value = section.getString(key, "");
+        NamespacedKey namespacedKey = NamespacedKey.fromString(value);
+
+        if(namespacedKey == null) {
+            throw new ConfigurationException(String.format("Invalid namespaced key '%s' at '%s' ", value, section.getCurrentPath()));
+        }
+
+        return namespacedKey;
     }
 }
