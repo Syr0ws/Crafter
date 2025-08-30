@@ -70,6 +70,6 @@ public class YamlDatabaseConfigService implements DatabaseConfigService<FileConf
         return driverList.getDrivers().stream()
                 .filter(driver -> driver.getDriverName().equalsIgnoreCase(driverName))
                 .findFirst()
-                .orElseThrow(() -> new ConfigurationException(String.format("Database driver '%s' at '%s.driver' is invalid or unsupported", driverName, path)));
+                .orElseThrow(() -> new ConfigurationException(String.format("Database driver '%s' at '%s' is invalid or unsupported", driverName, path)));
     }
 }
