@@ -1,6 +1,7 @@
 package com.github.syr0ws.crafter.database;
 
-import com.github.syr0ws.crafter.database.connection.DatabaseConnectionPool;
+import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
+import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPool;
 
 import java.sql.Connection;
 import java.sql.SQLException;

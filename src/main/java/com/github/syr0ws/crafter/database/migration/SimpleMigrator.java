@@ -1,8 +1,8 @@
 package com.github.syr0ws.crafter.database.migration;
 
-import com.github.syr0ws.crafter.database.Database;
-import com.github.syr0ws.crafter.database.DatabaseDriver;
 import com.github.syr0ws.crafter.database.util.ScriptRunner;
+import com.github.syr0ws.crafter.database.Database;
+import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.plugin.Plugin;
 

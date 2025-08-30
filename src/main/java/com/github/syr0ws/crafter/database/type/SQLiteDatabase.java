@@ -1,13 +1,14 @@
 package com.github.syr0ws.crafter.database.type;
 
-import com.github.syr0ws.crafter.database.DatabaseDriver;
-import com.github.syr0ws.crafter.database.config.DatabaseConnectionConfig;
-import com.github.syr0ws.crafter.database.connection.DatabaseConnectionPool;
+import com.github.syr0ws.crafter.database.config.DatabaseConfig;
+import com.github.syr0ws.crafter.database.driver.CommonDatabaseDriver;
+import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
+import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPool;
 
 public class SQLiteDatabase extends AbstractDatabase {
 
-    public SQLiteDatabase(DatabaseConnectionPool pool, DatabaseConnectionConfig config) {
-        super(pool, config);
+    public SQLiteDatabase(DatabaseConfig config, DatabaseConnectionPool pool) {
+        super(config, pool);
     }
 
     @Override
@@ -17,6 +18,6 @@ public class SQLiteDatabase extends AbstractDatabase {
 
     @Override
     public DatabaseDriver getDriver() {
-        return DatabaseDriver.SQLITE;
+        return CommonDatabaseDriver.SQLITE;
     }
 }

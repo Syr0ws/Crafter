@@ -1,9 +1,6 @@
-package com.github.syr0ws.crafter.database;
+package com.github.syr0ws.crafter.database.driver;
 
-/**
- * Enumeration of supported database drivers.
- */
-public enum DatabaseDriver {
+public enum CommonDatabaseDriver implements DatabaseDriver {
 
     SQLITE("sqlite", "org.sqlite.JDBC"),
     MYSQL("mysql", "com.mysql.cj.jdbc.Driver"),
@@ -13,25 +10,17 @@ public enum DatabaseDriver {
     private final String driverName;
     private final String driverClass;
 
-    DatabaseDriver(String driverName, String driverClass) {
+    CommonDatabaseDriver(String driverName, String driverClass) {
         this.driverName = driverName;
         this.driverClass = driverClass;
     }
 
-    /**
-     * Returns the name of the database driver.
-     *
-     * @return the driver name
-     */
+    @Override
     public String getDriverName() {
         return this.driverName;
     }
 
-    /**
-     * Returns the fully qualified class name of the database driver.
-     *
-     * @return the driver class name
-     */
+    @Override
     public String getDriverClass() {
         return this.driverClass;
     }
