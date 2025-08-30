@@ -18,35 +18,35 @@ public class RemoteDatabaseConfigLoader implements DatabaseConfigLoader<FileConf
 
         ConfigurationSection section = config.getConfigurationSection(YamlDatabaseConfigService.SECTION_DATABASE);
 
-        if(section == null) {
+        if (section == null) {
             throw new ConfigurationException("Section '%s' not found in configuration".formatted(YamlDatabaseConfigService.SECTION_DATABASE));
         }
 
         // Loading properties.
-        if(!section.isString(PROPERTY_HOST)) {
+        if (!section.isString(PROPERTY_HOST)) {
             throw new ConfigurationException("Property '%s' not found or is not a string at '%s'".formatted(PROPERTY_HOST, section.getCurrentPath()));
         }
 
-        if(!section.isInt(PROPERTY_PORT)) {
+        if (!section.isInt(PROPERTY_PORT)) {
             throw new ConfigurationException("Property '%s' not found or is not a string at '%s'".formatted(PROPERTY_PORT, section.getCurrentPath()));
         }
 
-        if(!section.isString(PROPERTY_DATABASE)) {
+        if (!section.isString(PROPERTY_DATABASE)) {
             throw new ConfigurationException("Property '%s' not found or is not a string at '%s'".formatted(PROPERTY_DATABASE, section.getCurrentPath()));
         }
 
-        if(!section.isString(PROPERTY_USER)) {
+        if (!section.isString(PROPERTY_USER)) {
             throw new ConfigurationException("Property '%s' not found or is not a string at '%s'".formatted(PROPERTY_USER, section.getCurrentPath()));
         }
 
-        if(!section.isString(PROPERTY_PASSWORD)) {
+        if (!section.isString(PROPERTY_PASSWORD)) {
             throw new ConfigurationException("Property '%s' not found or is not a string at '%s'".formatted(PROPERTY_PASSWORD, section.getCurrentPath()));
         }
 
         String host = section.getString(PROPERTY_HOST);
         int port = section.getInt(PROPERTY_PORT);
 
-        if(port <= 0) {
+        if (port <= 0) {
             throw new ConfigurationException("Property '%s' is invalid at '%s'".formatted(PROPERTY_PORT, section.getCurrentPath()));
         }
 

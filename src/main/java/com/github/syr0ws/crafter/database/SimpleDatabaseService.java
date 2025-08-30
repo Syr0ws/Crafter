@@ -19,7 +19,7 @@ public class SimpleDatabaseService implements DatabaseService {
 
         DatabaseDriver driver = config.getDriver();
 
-        if(driver == null) {
+        if (driver == null) {
             throw new IllegalArgumentException("driver cannot be null in DatabaseConfig");
         }
 
@@ -37,7 +37,7 @@ public class SimpleDatabaseService implements DatabaseService {
         database.createDatabaseIfNotExists();
 
         // Doing the migration if a migrator has been provided.
-        if(migrator != null) {
+        if (migrator != null) {
             migrator.migrate(database);
         }
 

@@ -1,15 +1,12 @@
 package com.github.syr0ws.crafter.database.pool.hikaricp;
 
-import com.github.syr0ws.crafter.database.exception.UnsupportedDatabaseDriverException;
 import com.github.syr0ws.crafter.database.config.DatabaseConfig;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
+import com.github.syr0ws.crafter.database.exception.UnsupportedDatabaseDriverException;
 import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPool;
 import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPoolFactory;
 import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.plugin.Plugin;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class HikariConnectionPoolFactory implements DatabaseConnectionPoolFactory {
 

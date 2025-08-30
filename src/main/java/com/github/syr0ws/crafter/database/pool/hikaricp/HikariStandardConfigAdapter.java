@@ -11,23 +11,23 @@ public class HikariStandardConfigAdapter implements HikariConfigAdapter {
     public HikariConfig getHikariConfig(DatabaseConfig config) throws InvalidDatabaseConfigException {
         String url = this.getJdbcUrl(config);
 
-        if(config.getHost() == null) {
+        if (config.getHost() == null) {
             throw new InvalidDatabaseConfigException("host cannot be null in DatabaseConfig");
         }
 
-        if(config.getPort() <= 0) {
+        if (config.getPort() <= 0) {
             throw new InvalidDatabaseConfigException("port is invalid in DatabaseConfig");
         }
 
-        if(config.getDatabase() == null) {
+        if (config.getDatabase() == null) {
             throw new InvalidDatabaseConfigException("database cannot be null in DatabaseConfig");
         }
 
-        if(config.getUser() == null) {
+        if (config.getUser() == null) {
             throw new InvalidDatabaseConfigException("user cannot be null in DatabaseConfig");
         }
 
-        if(config.getPassword() == null) {
+        if (config.getPassword() == null) {
             throw new InvalidDatabaseConfigException("password cannot be null in DatabaseConfig");
         }
 
