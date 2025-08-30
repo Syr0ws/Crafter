@@ -12,7 +12,7 @@ public interface DatabaseService {
     /**
      * Sets up a {@link Database} using the given configuration and connection pool factory.
      *
-     * @param config database configuration
+     * @param config  database configuration
      * @param factory connection pool factory
      * @return the configured database
      * @throws Exception if the setup fails
@@ -22,9 +22,9 @@ public interface DatabaseService {
     /**
      * Sets up a {@link Database} using the given configuration, connection pool factory, and migrator.
      *
-     * @param config database configuration
+     * @param config      database configuration
      * @param poolFactory connection pool factory
-     * @param migrator database migrator
+     * @param migrator    database migrator
      * @return the configured database
      * @throws Exception if the setup fails
      */

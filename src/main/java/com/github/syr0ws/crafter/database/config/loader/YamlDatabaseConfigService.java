@@ -57,7 +57,7 @@ public class YamlDatabaseConfigService implements DatabaseConfigService<FileConf
     /**
      * Extracts the {@link DatabaseDriver} from the configuration using the supported driver list.
      *
-     * @param config YAML configuration file
+     * @param config     YAML configuration file
      * @param driverList supported driver list
      * @return the resolved database driver
      * @throws ConfigurationException if the driver is invalid or unsupported

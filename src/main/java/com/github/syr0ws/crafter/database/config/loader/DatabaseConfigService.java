@@ -25,7 +25,7 @@ public interface DatabaseConfigService<T> {
     /**
      * Loads a {@link DatabaseConfig} using the given database driver and data source.
      *
-     * @param driver database driver
+     * @param driver     database driver
      * @param dataSource source used to load the configuration
      * @return the loaded database configuration
      * @throws ConfigurationException if the configuration cannot be loaded
