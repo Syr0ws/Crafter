@@ -2,7 +2,6 @@ package com.github.syr0ws.crafter.database.pool.hikaricp;
 
 import com.github.syr0ws.crafter.database.config.DatabaseConfig;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
-import com.github.syr0ws.crafter.database.exception.UnsupportedDatabaseDriverException;
 import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPool;
 import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPoolFactory;
 import com.github.syr0ws.crafter.util.Validate;
@@ -18,7 +17,7 @@ public class HikariConnectionPoolFactory implements DatabaseConnectionPoolFactor
     }
 
     @Override
-    public DatabaseConnectionPool createConnectionPool(DatabaseConfig config) throws UnsupportedDatabaseDriverException {
+    public DatabaseConnectionPool createConnectionPool(DatabaseConfig config) {
 
         DatabaseDriver driver = config.getDriver();
 

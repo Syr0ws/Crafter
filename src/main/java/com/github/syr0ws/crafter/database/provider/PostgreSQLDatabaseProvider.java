@@ -4,6 +4,9 @@ import com.github.syr0ws.crafter.database.Database;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.type.PostgreSQLDatabase;
 
+/**
+ * {@link DatabaseProvider} implementation for PostgreSQL databases.
+ */
 public class PostgreSQLDatabaseProvider implements DatabaseProvider {
 
     @Override

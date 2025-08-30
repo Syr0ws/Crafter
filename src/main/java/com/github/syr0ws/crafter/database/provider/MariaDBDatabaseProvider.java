@@ -4,6 +4,9 @@ import com.github.syr0ws.crafter.database.Database;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.type.MariaDBDatabase;
 
+/**
+ * {@link DatabaseProvider} implementation for MariaDB databases.
+ */
 public class MariaDBDatabaseProvider implements DatabaseProvider {
 
     @Override

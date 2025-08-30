@@ -11,6 +11,9 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * {@link DatabaseConnectionPool} implementation using HikariCP.
+ */
 public class HikariConnectionPool implements DatabaseConnectionPool {
 
     private final HikariConfigAdapter adapter;

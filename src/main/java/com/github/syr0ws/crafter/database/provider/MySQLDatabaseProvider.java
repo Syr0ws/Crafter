@@ -4,6 +4,9 @@ import com.github.syr0ws.crafter.database.Database;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.type.MySQLDatabase;
 
+/**
+ * {@link DatabaseProvider} implementation for MySQL databases.
+ */
 public class MySQLDatabaseProvider implements DatabaseProvider {
 
     @Override

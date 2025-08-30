@@ -1,9 +1,17 @@
 package com.github.syr0ws.crafter.database.pool;
 
 import com.github.syr0ws.crafter.database.config.DatabaseConfig;
-import com.github.syr0ws.crafter.database.exception.UnsupportedDatabaseDriverException;
 
+/**
+ * Factory for creating {@link DatabaseConnectionPool} instances.
+ */
 public interface DatabaseConnectionPoolFactory {
 
-    DatabaseConnectionPool createConnectionPool(DatabaseConfig config) throws UnsupportedDatabaseDriverException;
+    /**
+     * Creates a {@link DatabaseConnectionPool} for the given {@link DatabaseConfig}.
+     *
+     * @param config database configuration
+     * @return a new database connection pool
+     */
+    DatabaseConnectionPool createConnectionPool(DatabaseConfig config);
 }

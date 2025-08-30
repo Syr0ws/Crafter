@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 import org.flywaydb.core.Flyway;
 
 /**
- * A {@link com.github.syr0ws.crafter.database.migration.DatabaseMigrator} implementation that uses Flyway for database migration.
+ * A {@link DatabaseMigrator} implementation that uses Flyway for database migration.
  */
 public class FlywayMigrator implements DatabaseMigrator {
 

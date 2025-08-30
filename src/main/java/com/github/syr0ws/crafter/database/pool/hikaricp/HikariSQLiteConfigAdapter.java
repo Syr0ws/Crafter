@@ -6,6 +6,9 @@ import com.github.syr0ws.crafter.util.Validate;
 import com.zaxxer.hikari.HikariConfig;
 import org.bukkit.plugin.Plugin;
 
+/**
+ * {@link HikariConfigAdapter} implementation for SQLite databases.
+ */
 public class HikariSQLiteConfigAdapter implements HikariConfigAdapter {
 
     private static final String DATABASE_FILE = "database.db";

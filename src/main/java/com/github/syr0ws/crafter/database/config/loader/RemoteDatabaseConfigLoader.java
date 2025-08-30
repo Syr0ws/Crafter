@@ -5,6 +5,10 @@ import com.github.syr0ws.crafter.database.config.DatabaseConfig;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
+/**
+ * Loads a {@link DatabaseConfig} from a {@link FileConfiguration} for remote databases like
+ * such as MySQL, MariaDB and PostgreSQL.
+ */
 public class RemoteDatabaseConfigLoader implements DatabaseConfigLoader<FileConfiguration> {
 
     private static final String PROPERTY_HOST = "host";

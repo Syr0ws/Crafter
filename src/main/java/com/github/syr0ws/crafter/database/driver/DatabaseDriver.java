@@ -1,5 +1,8 @@
 package com.github.syr0ws.crafter.database.driver;
 
+/**
+ * Enumeration of supported database drivers.
+ */
 public enum DatabaseDriver {
 
     SQLITE("sqlite", "org.sqlite.JDBC"),
@@ -15,10 +18,20 @@ public enum DatabaseDriver {
         this.driverClass = driverClass;
     }
 
+    /**
+     * Returns the name of the database driver.
+     *
+     * @return the driver name
+     */
     public String getDriverName() {
         return this.driverName;
     }
 
+    /**
+     * Returns the fully qualified class name of the database driver.
+     *
+     * @return the driver class name
+     */
     public String getDriverClass() {
         return this.driverClass;
     }

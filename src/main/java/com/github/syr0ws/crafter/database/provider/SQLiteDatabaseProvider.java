@@ -4,6 +4,9 @@ import com.github.syr0ws.crafter.database.Database;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.type.SQLiteDatabase;
 
+/**
+ * {@link DatabaseProvider} implementation for SQLite databases.
+ */
 public class SQLiteDatabaseProvider implements DatabaseProvider {
 
     @Override

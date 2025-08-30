@@ -7,6 +7,10 @@ import com.github.syr0ws.crafter.database.driver.SupportedDriverList;
 import com.github.syr0ws.crafter.util.Validate;
 import org.bukkit.configuration.file.FileConfiguration;
 
+/**
+ * Implementation of {@link DatabaseConfigService} that loads {@link DatabaseConfig}
+ * from a {@link FileConfiguration}.
+ */
 public class YamlDatabaseConfigService implements DatabaseConfigService<FileConfiguration> {
 
     public static final String SECTION_DATABASE = "database";
@@ -26,6 +30,7 @@ public class YamlDatabaseConfigService implements DatabaseConfigService<FileConf
         return databaseConfig;
     }
 
+    @Override
     public DatabaseConfig loadConfig(DatabaseDriver driver, FileConfiguration config) throws ConfigurationException {
         Validate.notNull(driver, "driver cannot be null");
         Validate.notNull(config, "config cannot be null");
@@ -38,11 +43,25 @@ public class YamlDatabaseConfigService implements DatabaseConfigService<FileConf
         return databaseConfig;
     }
 
-    public DatabaseConfigLoader<FileConfiguration> getConfigLoader(DatabaseDriver driver) {
+    /**
+     * Returns the appropriate {@link DatabaseConfigLoader} for the given driver.
+     *
+     * @param driver database driver
+     * @return the configuration loader for the given driver
+     */
+    private DatabaseConfigLoader<FileConfiguration> getConfigLoader(DatabaseDriver driver) {
         Validate.notNull(driver, "driver cannot be null");
         return driver == DatabaseDriver.SQLITE ? new SQLiteConfigurationLoader() : new RemoteDatabaseConfigLoader();
     }
 
+    /**
+     * Extracts the {@link DatabaseDriver} from the configuration using the supported driver list.
+     *
+     * @param config YAML configuration file
+     * @param driverList supported driver list
+     * @return the resolved database driver
+     * @throws ConfigurationException if the driver is invalid or unsupported
+     */
     private DatabaseDriver getDriver(FileConfiguration config, SupportedDriverList driverList) throws ConfigurationException {
 
         String path = SECTION_DATABASE + ".driver";

@@ -5,6 +5,10 @@ import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.exception.InvalidDatabaseConfigException;
 import com.zaxxer.hikari.HikariConfig;
 
+/**
+ * {@link HikariConfigAdapter} implementation for remote databases such as
+ * MySQL, MariaDB and PostgreSQL.
+ */
 public class HikariStandardConfigAdapter implements HikariConfigAdapter {
 
     @Override
