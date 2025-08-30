@@ -1,7 +1,6 @@
 package com.github.syr0ws.crafter.database.type;
 
 import com.github.syr0ws.crafter.database.config.DatabaseConfig;
-import com.github.syr0ws.crafter.database.driver.CommonDatabaseDriver;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.pool.DatabaseConnectionPool;
 import com.github.syr0ws.crafter.util.Validate;
@@ -33,6 +32,6 @@ public class MySQLDatabase extends RemoteDatabase {
 
     @Override
     public DatabaseDriver getDriver() {
-        return CommonDatabaseDriver.MYSQL;
+        return DatabaseDriver.MYSQL;
     }
 }

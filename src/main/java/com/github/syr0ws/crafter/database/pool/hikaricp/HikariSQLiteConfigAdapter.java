@@ -1,7 +1,7 @@
 package com.github.syr0ws.crafter.database.pool.hikaricp;
 
 import com.github.syr0ws.crafter.database.config.DatabaseConfig;
-import com.github.syr0ws.crafter.database.driver.CommonDatabaseDriver;
+import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.util.Validate;
 import com.zaxxer.hikari.HikariConfig;
 import org.bukkit.plugin.Plugin;
@@ -25,7 +25,7 @@ public class HikariSQLiteConfigAdapter implements HikariConfigAdapter {
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setMaximumPoolSize(1);
         hikariConfig.setJdbcUrl(url);
-        hikariConfig.setDriverClassName(CommonDatabaseDriver.SQLITE.getDriverClass());
+        hikariConfig.setDriverClassName(DatabaseDriver.SQLITE.getDriverClass());
         hikariConfig.setConnectionTimeout(10000);
         hikariConfig.setAutoCommit(true);
         hikariConfig.setConnectionInitSql("PRAGMA foreign_keys = ON;");
@@ -35,6 +35,6 @@ public class HikariSQLiteConfigAdapter implements HikariConfigAdapter {
 
     private String getJdbcUrl() {
         String path = this.plugin.getDataFolder().getAbsolutePath() + "/" + DATABASE_FILE;
-        return "jdbc:%s:%s".formatted(CommonDatabaseDriver.SQLITE.getDriverName(), path);
+        return "jdbc:%s:%s".formatted(DatabaseDriver.SQLITE.getDriverName(), path);
     }
 }

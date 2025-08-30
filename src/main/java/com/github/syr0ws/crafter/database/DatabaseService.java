@@ -16,7 +16,7 @@ import java.util.Optional;
 
 public class DatabaseService {
 
-    private final Map<String, DatabaseProvider> providers = new HashMap<>();
+    private final Map<DatabaseDriver, DatabaseProvider> providers = new HashMap<>();
 
     public Database setupDatabase(DatabaseConfig config, DatabaseConnectionPoolFactory factory) throws Exception {
         return this.setupDatabase(config, factory, null);
@@ -55,10 +55,10 @@ public class DatabaseService {
     public void addProvider(DatabaseProvider provider) {
         Validate.notNull(provider, "provider cannot be null");
         DatabaseDriver driver = provider.getDriver();
-        this.providers.put(driver.getDriverName(), provider);
+        this.providers.put(driver, provider);
     }
 
     private Optional<DatabaseProvider> getProvider(DatabaseDriver driver) {
-        return Optional.ofNullable(this.providers.get(driver.getDriverName()));
+        return Optional.ofNullable(this.providers.get(driver));
     }
 }

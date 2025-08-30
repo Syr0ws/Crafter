@@ -1,7 +1,6 @@
 package com.github.syr0ws.crafter.database.provider;
 
 import com.github.syr0ws.crafter.database.Database;
-import com.github.syr0ws.crafter.database.driver.CommonDatabaseDriver;
 import com.github.syr0ws.crafter.database.driver.DatabaseDriver;
 import com.github.syr0ws.crafter.database.type.MariaDBDatabase;
 
@@ -14,6 +13,6 @@ public class MariaDBDatabaseProvider implements DatabaseProvider {
 
     @Override
     public DatabaseDriver getDriver() {
-        return CommonDatabaseDriver.MARIADB;
+        return DatabaseDriver.MARIADB;
     }
 }
