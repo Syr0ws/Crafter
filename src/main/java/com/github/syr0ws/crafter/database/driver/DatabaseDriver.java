@@ -1,4 +1,4 @@
-package com.github.syr0ws.crafter.database;
+package com.github.syr0ws.crafter.database.driver;
 
 /**
  * Enumeration of supported database drivers.

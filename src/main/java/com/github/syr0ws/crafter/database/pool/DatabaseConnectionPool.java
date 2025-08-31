@@ -1,4 +1,7 @@
-package com.github.syr0ws.crafter.database.connection;
+package com.github.syr0ws.crafter.database.pool;
+
+import com.github.syr0ws.crafter.database.config.DatabaseConfig;
+import com.github.syr0ws.crafter.database.exception.InvalidDatabaseConfigException;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,7 +17,7 @@ public interface DatabaseConnectionPool {
      *
      * @throws SQLException if a database access error occurs
      */
-    void open() throws SQLException;
+    void open(DatabaseConfig config) throws InvalidDatabaseConfigException, SQLException;
 
     /**
      * Closes the database connection pool.

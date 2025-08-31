@@ -8,9 +8,9 @@ import com.github.syr0ws.crafter.util.Validate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class MySQLDatabase extends RemoteDatabase {
+public class MariaDBDatabase extends RemoteDatabase {
 
-    public MySQLDatabase(DatabaseConfig config, DatabaseConnectionPool pool) {
+    public MariaDBDatabase(DatabaseConfig config, DatabaseConnectionPool pool) {
         super(config, pool);
     }
 
@@ -32,6 +32,6 @@ public class MySQLDatabase extends RemoteDatabase {
 
     @Override
     public DatabaseDriver getDriver() {
-        return DatabaseDriver.MYSQL;
+        return DatabaseDriver.MARIADB;
     }
 }
