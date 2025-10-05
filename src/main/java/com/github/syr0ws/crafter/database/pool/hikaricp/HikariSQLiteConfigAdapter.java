@@ -26,7 +26,6 @@ public class HikariSQLiteConfigAdapter implements HikariConfigAdapter {
         String url = this.getJdbcUrl();
 
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setMaximumPoolSize(1);
         hikariConfig.setJdbcUrl(url);
         hikariConfig.setDriverClassName(DatabaseDriver.SQLITE.getDriverClass());
         hikariConfig.setConnectionTimeout(10000);
