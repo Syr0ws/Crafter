@@ -30,7 +30,7 @@ Crafter actually contains utilities for the following use cases:
   - Promise to handle async operations
   - SQL script runner
   - Business operations utilities
-  - NMS version handling
+  - Minecraft / NMS version detection
 
 ## Setup
 
