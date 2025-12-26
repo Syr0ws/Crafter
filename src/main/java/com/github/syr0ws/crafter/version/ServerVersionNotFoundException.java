@@ -1,4 +1,4 @@
-package com.github.syr0ws.crafter.nms;
+package com.github.syr0ws.crafter.version;
 
 /**
  * Thrown when a corresponding {@link ServerVersion} cannot be determined.

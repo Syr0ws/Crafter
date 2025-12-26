@@ -1,4 +1,4 @@
-package com.github.syr0ws.crafter.nms;
+package com.github.syr0ws.crafter.version;
 
 import org.bukkit.Bukkit;
 
