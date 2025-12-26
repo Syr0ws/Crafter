@@ -24,7 +24,7 @@ public class ServerVersionUtil {
         String bukkitVersion = Bukkit.getVersion();
         Matcher matcher = VERSION_PATTERN.matcher(bukkitVersion);
 
-        if(!matcher.find()) {
+        if (!matcher.find()) {
             throw new ServerVersionNotFoundException("Cannot parse server version from '%s'".formatted(bukkitVersion));
         }
 

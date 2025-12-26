@@ -29,6 +29,24 @@ public enum ServerVersion {
     }
 
     /**
+     * Returns the {@link ServerVersion} matching the given Minecraft version string.
+     *
+     * @param minecraftVersion the Minecraft version to look up
+     * @return an {@link Optional} containing the matching {@code ServerVersion}, or empty if not found
+     * @throws IllegalArgumentException if {@code minecraftVersion} is {@code null}
+     */
+    public static Optional<ServerVersion> getServerVersion(String minecraftVersion) {
+
+        if (minecraftVersion == null) {
+            throw new IllegalArgumentException("minecraftVersion cannot be null");
+        }
+
+        return Arrays.stream(values())
+                .filter(version -> version.getMinecraftVersion().equals(minecraftVersion))
+                .findFirst();
+    }
+
+    /**
      * Returns the Minecraft version represented by this enum constant.
      *
      * @return the Minecraft version
@@ -44,23 +62,5 @@ public enum ServerVersion {
      */
     public NMSVersion getNmsVersion() {
         return nmsVersion;
-    }
-
-    /**
-     * Returns the {@link ServerVersion} matching the given Minecraft version string.
-     *
-     * @param minecraftVersion the Minecraft version to look up
-     * @return an {@link Optional} containing the matching {@code ServerVersion}, or empty if not found
-     * @throws IllegalArgumentException if {@code minecraftVersion} is {@code null}
-     */
-    public static Optional<ServerVersion> getServerVersion(String minecraftVersion) {
-
-        if(minecraftVersion == null) {
-            throw new IllegalArgumentException("minecraftVersion cannot be null");
-        }
-
-        return Arrays.stream(values())
-                .filter(version -> version.getMinecraftVersion().equals(minecraftVersion))
-                .findFirst();
     }
 }
