@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
  */
 public class ServerVersionUtil {
 
-    private static final Pattern VERSION_PATTERN = Pattern.compile("(\\d\\.\\d+\\.\\d+)");
+    private static final Pattern VERSION_PATTERN = Pattern.compile("(\\d+\\.\\d+(\\.\\d+)?)");
 
     /**
      * Returns the current Minecraft version.
