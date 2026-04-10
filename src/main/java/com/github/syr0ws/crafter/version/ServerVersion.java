@@ -13,7 +13,10 @@ public enum ServerVersion {
     v1_21_8(NMSVersion.v1_21_R5),
     v1_21_9(NMSVersion.v1_21_R6),
     v1_21_10(NMSVersion.v1_21_R6),
-    v1_21_11(NMSVersion.v1_21_R7);
+    v1_21_11(NMSVersion.v1_21_R7),
+    v26_1(NMSVersion.v26_1),
+    v26_1_1(NMSVersion.v26_1),
+    v26_1_2(NMSVersion.v26_1);
 
     private final String minecraftVersion;
     private final NMSVersion nmsVersion;
