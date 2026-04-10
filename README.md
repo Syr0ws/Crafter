@@ -58,7 +58,7 @@ To minimize the jar and relocate the sources, you can use `maven-shade-plugin`:
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
       <artifactId>maven-shade-plugin</artifactId>
-      <version>3.6.0</version>
+      <version>3.6.2</version>
       <executions>
         <execution>
           <phase>package</phase>
@@ -99,7 +99,7 @@ dependencies {
 To minimize the jar and relocate the sources, you can use the `shadow` plugin:
 ```groovy
 plugins {
-  id 'com.github.johnrengelman.shadow' version '8.3.5'
+  id 'com.gradleup.shadow' version '9.4.1'
 }
 
 shadowJar {
