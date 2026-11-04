@@ -17,7 +17,8 @@ public enum ServerVersion {
     v26_1(NMSVersion.v26_1),
     v26_1_1(NMSVersion.v26_1),
     v26_1_2(NMSVersion.v26_1),
-    v26_2(NMSVersion.v26_2);
+    v26_2(NMSVersion.v26_2),
+    v26_3(NMSVersion.v26_3);
 
     private final String minecraftVersion;
     private final NMSVersion nmsVersion;

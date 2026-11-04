@@ -9,5 +9,6 @@ public enum NMSVersion {
     v1_21_R6,
     v1_21_R7,
     v26_1,
-    v26_2
+    v26_2,
+    v26_3
 }
